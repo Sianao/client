@@ -1,4 +1,4 @@
-module github.com/sianao/clieny
+module github.com/sianao/client
 
 go 1.20
 
