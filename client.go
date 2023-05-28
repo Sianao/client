@@ -90,6 +90,9 @@ func (c *GorseClient) GetItem(ctx context.Context, itemId string) (Item, error) 
 func (c *GorseClient) DeleteItem(ctx context.Context, itemId string) (RowAffected, error) {
 	return request[RowAffected, any](ctx, c, "DELETE", c.entryPoint+fmt.Sprintf("/api/item/%s", itemId), nil)
 }
+func (c *GorseClient) DeleteFeedBack(ctx context.Context, id string, itemId string) (RowAffected, error) {
+	return request[RowAffected, any](ctx, c, "DELETE", c.entryPoint+fmt.Sprintf("/api/feedback/%s/%s", id, itemId), nil)
+}
 
 func request[Response any, Body any](ctx context.Context, c *GorseClient, method, url string, body Body) (result Response, err error) {
 	bodyByte, marshalErr := json.Marshal(body)
